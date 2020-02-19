@@ -24,5 +24,8 @@ import Message from './components/Message'
 Vue.component('message', Message);
 
 new Vue({
-    render: h => h(App)
-}).$mount("#app")
+    el: "#app"
+});
+// new Vue({
+//     render: h => h(App)
+// }).$mount("#app")
