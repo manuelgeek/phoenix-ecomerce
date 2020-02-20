@@ -1,0 +1,38 @@
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8">
+  <title>Shop</title>
+  <meta name="keywords" content="HTML5 Template" />
+  <meta name="description" content="Porto - Responsive HTML5 Template">
+  <meta name="author" content="okler.net">
+  <meta name="csrf_token" content="<%= get_csrf_token() %>" />
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Web Fonts  -->
+  <link href="http://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800%7CShadows+Into+Light" rel="stylesheet" type="text/css">
+  <!-- Vendor CSS -->
+  <link rel="stylesheet" href="/dist/vendor/bootstrap/bootstrap.css">
+  <link rel="stylesheet" href="/dist/vendor/fontawesome/css/font-awesome.css">
+  <link rel="stylesheet" href="/dist/vendor/owlcarousel/owl.carousel.min.css" media="screen">
+  <link rel="stylesheet" href="/dist/vendor/owlcarousel/owl.theme.default.min.css" media="screen">
+  <link rel="stylesheet" href="/dist/vendor/magnific-popup/magnific-popup.css" media="screen">
+  <!-- Theme CSS -->
+  <link rel="stylesheet" href="/dist/css/theme.css">
+  <link rel="stylesheet" href="/dist/css/theme-elements.css">
+  <link rel="stylesheet" href="/dist/css/theme-blog.css">
+  <link rel="stylesheet" href="/dist/css/theme-shop.css">
+  <link rel="stylesheet" href="/dist/css/theme-animate.css">
+  <!-- Skin CSS -->
+  <link rel="stylesheet" href="/dist/css/skins/default.css">
+  <!-- Theme Custom CSS -->
+  <link rel="stylesheet" href="/dist/css/custom.css">
+  <!-- Head Libs -->
+  <script src="/dist/vendor/modernizr/modernizr.js"></script>
+  <!--[if IE]>
+    <link rel="stylesheet" href="/dist/css/ie.css">
+  <![endif]-->
+  <!--[if lte IE 8]>
+    <script src="/dist/vendor/respond/respond.js"></script>
+    <script src="/dist/vendor/excanvas/excanvas.js"></script>
+  <![endif]-->
+</head>

@@ -1,0 +1,98 @@
+<header id="header">
+  <div class="container">
+    <div class="logo">
+      <a href="/">
+        <img alt="Porto" width="111" height="54" data-sticky-width="82" data-sticky-height="40" src="/dist/img/logo.png">
+      </a>
+    </div>
+    <div class="search">
+      <form id="searchForm" action="page-search-results.html" method="get">
+        <div class="input-group">
+          <input type="text" class="form-control search" name="q" id="q" placeholder="Search..." required>
+          <span class="input-group-btn">
+            <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button>
+          </span>
+        </div>
+      </form>
+    </div>
+    <ul class="social-icons">
+      <li class="facebook"><a href="http://www.facebook.com/" target="_blank" title="Facebook">Facebook</a></li>
+      <li class="twitter"><a href="http://www.twitter.com/" target="_blank" title="Twitter">Twitter</a></li>
+      <li class="linkedin"><a href="http://www.linkedin.com/" target="_blank" title="Linkedin">Linkedin</a></li>
+    </ul>
+    <nav>
+      <ul class="nav nav-pills nav-top">
+        <li>
+          <a href="#"><i class="fa fa-angle-right"></i>About Us</a>
+        </li>
+        <li>
+          <a href="#"><i class="fa fa-angle-right"></i>Contact Us</a>
+        </li>
+        <li class="phone">
+          <span><i class="fa fa-phone"></i>(123) 456-7890</span>
+        </li>
+      </ul>
+    </nav>
+    <button class="btn btn-responsive-nav btn-inverse" data-toggle="collapse" data-target=".nav-main-collapse">
+      <i class="fa fa-bars"></i>
+    </button>
+  </div>
+  <div class="navbar-collapse nav-main-collapse collapse">
+    <div class="container">
+      <nav class="nav-main mega-menu">
+        <ul class="nav nav-pills nav-main" id="mainMenu">
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="#">Shortcodes</a>
+          </li>
+          <li class="dropdown mega-menu-item mega-menu-shop">
+            <a class="dropdown-toggle mobile-redirect" href="shop-cart.html">
+              <i class="fa fa-shopping-cart"></i> Cart (1) - $299
+              <i class="fa fa-angle-down"></i>
+            </a>
+            <ul class="dropdown-menu">
+              <li>
+                <div class="mega-menu-content">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <table cellspacing="0" class="cart">
+                        <tbody>
+                          <tr>
+                            <td class="product-thumbnail">
+                              <a href="shop-product-sidebar.html">
+                                <img width="100" height="100" alt="" class="img-responsive" src="/dist/img/products/product-1.jpg">
+                              </a>
+                            </td>
+                            <td class="product-name">
+                              <a href="shop-product-sidebar.html">Photo Camera<br>
+                                <span class="amount"><strong>$299</strong></span></a>
+                            </td>
+                            <td class="product-actions">
+                              <a title="Remove this item" class="remove" href="#">
+                                <i class="fa fa-times"></i>
+                              </a>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td class="actions" colspan="6">
+                              <div class="actions-continue">
+                                <input type="submit" value="View All" class="btn btn-default">
+                                <input type="submit" value="Proceed to Checkout →" name="proceed" class="btn pull-right btn-primary">
+                              </div>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
