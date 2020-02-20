@@ -1,0 +1,65 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row featured-boxes login">
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="featured-box featured-box-secundary default info-content">
+            <div class="box-content">
+              <h4>Register An Account</h4>
+              <%= form_for @changeset, Routes.user_path(@conn, :create), [], fn f -> %>
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <label>Name</label>
+                    <%= text_input f, :name , class: "form-control input-lg"%>
+                    <%= error_tag f, :name %>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <label>Phone Number</label>
+                    <%= text_input f, :phone , class: "form-control input-lg"%>
+                    <%= error_tag f, :phone %>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <label>E-mail </label>
+                    <%= email_input f, :email , class: "form-control input-lg"%>
+                    <%= error_tag f, :email %>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="form-group">
+                  <div class="col-md-6">
+                    <label>Password</label>
+                    <input type="password" name="user[password]" value="" class="form-control input-lg">
+                    <%= error_tag f, :password %>
+                  </div>
+                  <div class="col-md-6">
+                    <label>Re-enter Password</label>
+                    <input type="password" name="user[password_confirmation]" value="" class="form-control input-lg">
+                    <%= error_tag f, :password_confirmation %>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <input type="submit" value="Register" class="btn btn-primary pull-right push-bottom" data-loading-text="Loading...">
+                  <br>
+                  <p>Already have an account? <a href="/login">Login</a></p>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

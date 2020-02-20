@@ -7,6 +7,8 @@ defmodule ShopWeb.Router do
     plug :fetch_flash
     plug :protect_from_forgery
     plug :put_secure_browser_headers
+    plug Phauxth.Authenticate
+    plug Phauxth.Remember, create_session_func: &ShopWeb.Auth.Utils.create_session/1
   end
 
   pipeline :api do
@@ -15,7 +17,16 @@ defmodule ShopWeb.Router do
 
   scope "/", ShopWeb do
     pipe_through :browser
+
+    get "/register", UserController, :new
+    post "/register", UserController, :create
+    get "/login", SessionController, :new
+    post "/login", SessionController, :create
+    post "/logout", SessionController, :delete
+
     get "/", PageController, :index
+    resources "/users", UserController, except: [:new, :create, :index]
+    # resources "/sessions", SessionController, only: [:new, :create, :delete]
     
     # get "/*path", GlobRouter, []
   end

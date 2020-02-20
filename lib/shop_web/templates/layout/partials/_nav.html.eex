@@ -47,52 +47,75 @@
           <li>
             <a href="#">Shortcodes</a>
           </li>
-          <li class="dropdown mega-menu-item mega-menu-shop">
-            <a class="dropdown-toggle mobile-redirect" href="shop-cart.html">
-              <i class="fa fa-shopping-cart"></i> Cart (1) - $299
-              <i class="fa fa-angle-down"></i>
-            </a>
-            <ul class="dropdown-menu">
-              <li>
-                <div class="mega-menu-content">
-                  <div class="row">
-                    <div class="col-md-12">
-                      <table cellspacing="0" class="cart">
-                        <tbody>
-                          <tr>
-                            <td class="product-thumbnail">
-                              <a href="shop-product-sidebar.html">
-                                <img width="100" height="100" alt="" class="img-responsive" src="/dist/img/products/product-1.jpg">
-                              </a>
-                            </td>
-                            <td class="product-name">
-                              <a href="shop-product-sidebar.html">Photo Camera<br>
-                                <span class="amount"><strong>$299</strong></span></a>
-                            </td>
-                            <td class="product-actions">
-                              <a title="Remove this item" class="remove" href="#">
-                                <i class="fa fa-times"></i>
-                              </a>
-                            </td>
-                          </tr>
-                          <tr>
-                            <td class="actions" colspan="6">
-                              <div class="actions-continue">
-                                <input type="submit" value="View All" class="btn btn-default">
-                                <input type="submit" value="Proceed to Checkout →" name="proceed" class="btn pull-right btn-primary">
-                              </div>
-                            </td>
-                          </tr>
-                        </tbody>
-                      </table>
-                    </div>
-                  </div>
-                </div>
-              </li>
+          <%= if @current_user !== nil do %>
+            <li class="dropdown">
+              <a class="dropdown-toggle" href="#">
+                <%= @current_user.name %>
+                <i class="fa fa-angle-down"></i>
+              </a>
+              <ul class="dropdown-menu">
+                <li>
+                  <a href="#">My Account</a>
+                </li>
+                <li> <a href="/logout" onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">Logout</a></li>
+                <%= form_for @conn, Routes.session_path(@conn, :delete), [as: :session , id: "logout-form"], fn f -> %>
+                <input type="hidden" name="id" value="<%= @conn.private[:plug_session]["phauxth_session_id"] %>">
+              <% end %>
             </ul>
           </li>
+        </li>
+      <% else %>
+        <li>
+          <a href="/login">Login</a>
+        </li>
+      <% end %>
+      <li class="dropdown mega-menu-item mega-menu-shop">
+        <a class="dropdown-toggle mobile-redirect" href="shop-cart.html">
+          <i class="fa fa-shopping-cart"></i> Cart (1) - $299
+          <i class="fa fa-angle-down"></i>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <div class="mega-menu-content">
+              <div class="row">
+                <div class="col-md-12">
+                  <table cellspacing="0" class="cart">
+                    <tbody>
+                      <tr>
+                        <td class="product-thumbnail">
+                          <a href="shop-product-sidebar.html">
+                            <img width="100" height="100" alt="" class="img-responsive" src="/dist/img/products/product-1.jpg">
+                          </a>
+                        </td>
+                        <td class="product-name">
+                          <a href="shop-product-sidebar.html">Photo Camera<br>
+                            <span class="amount"><strong>$299</strong></span></a>
+                        </td>
+                        <td class="product-actions">
+                          <a title="Remove this item" class="remove" href="#">
+                            <i class="fa fa-times"></i>
+                          </a>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td class="actions" colspan="6">
+                          <div class="actions-continue">
+                            <input type="submit" value="View All" class="btn btn-default">
+                            <input type="submit" value="Proceed to Checkout →" name="proceed" class="btn pull-right btn-primary">
+                          </div>
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </li>
         </ul>
-      </nav>
-    </div>
-  </div>
+      </li>
+    </ul>
+  </nav>
+</div>
+</div>
 </header>

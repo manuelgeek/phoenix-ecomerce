@@ -5,6 +5,7 @@
     <div class="body" id="app">
       <%= render "partials/_nav.html", assigns %>
       <div role="main" class="main shop">
+        <hr class="tall">
         <%= render @view_module, @view_template, assigns %>
       </div>
       <%= render "partials/_footer.html", assigns %>
