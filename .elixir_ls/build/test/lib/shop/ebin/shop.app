@@ -30,8 +30,8 @@
                         'Elixir.ShopWeb.SessionController',
                         'Elixir.ShopWeb.SessionView',
                         'Elixir.ShopWeb.UserController',
-                        'Elixir.ShopWeb.UserSocket',
-                        'Elixir.ShopWeb.UserView']},
+                        'Elixir.ShopWeb.UserSocket','Elixir.ShopWeb.UserView',
+                        'Elixir.ShopWeb.Views.PartialsView']},
               {registered,[]},
               {vsn,"0.1.0"},
               {mod,{'Elixir.Shop.Application',[]}}]}.
