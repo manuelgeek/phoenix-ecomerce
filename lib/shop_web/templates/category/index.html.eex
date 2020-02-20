@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row featured-boxes login">
+        <div class="col-sm-8 col-sm-offset-2">
+          <div class="featured-box featured-box-secundary default info-content">
+            <div class="box-content">
+              <h4>Listing Categories</h4>
+              <table class="table table-responsive">
+                <thead>
+                  <tr>
+                    <th>Name</th>
+                    <th>Slug</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <%= for category <- @categories do %>
+                    <tr>
+                      <td><%= category.name %></td>
+                      <td><%= category.slug %></td>
+                      <td><%= status category.status %></td>
+                      <td>
+                        <span><%= link "Show", to: Routes.category_path(@conn, :show, category) %></span>
+                        <span><%= link "Edit", to: Routes.category_path(@conn, :edit, category) %></span>
+                        <span><%= link "Delete", to: Routes.category_path(@conn, :delete, category), method: :delete, data: [confirm: "Are you sure?"] %></span>
+                      </td>
+                    </tr>
+                  <% end %>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<span><%= link "New Category", to: Routes.category_path(@conn, :new) %></span>

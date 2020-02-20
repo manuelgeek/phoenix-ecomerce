@@ -26,6 +26,7 @@ defmodule ShopWeb.Router do
 
     get "/", PageController, :index
     resources "/users", UserController, except: [:new, :create, :index]
+    resources "/categories", CategoryController
     # resources "/sessions", SessionController, only: [:new, :create, :delete]
     
     # get "/*path", GlobRouter, []

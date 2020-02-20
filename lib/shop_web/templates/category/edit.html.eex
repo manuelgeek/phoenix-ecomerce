@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row featured-boxes login">
+        <div class="col-sm-6 col-sm-offset-3">
+          <div class="featured-box featured-box-secundary default info-content">
+            <div class="box-content">
+              <h4>Edit Category</h4>
+              <%= render "form.html", Map.put(assigns, :action, Routes.category_path(@conn, :update, @category)) %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<span><%= link "Back", to: Routes.category_path(@conn, :index) %></span>

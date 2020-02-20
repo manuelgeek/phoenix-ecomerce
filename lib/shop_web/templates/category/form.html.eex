@@ -1,0 +1,29 @@
+<%= form_for @changeset, @action, fn f -> %>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-12">
+                <%= label f, :name %>
+                  <%= text_input f, :name, class: "form-control input-lg" %>
+                  <%= error_tag f, :name %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group">
+            <div class="col-md-12">
+                <label>Status</label>
+                <select name="category[status]" class="form-control input-lg">
+                  <option value="">Select Status</option>
+                  <option selected value="true">Active</option>
+                  <option value="false">Inactive</option>
+                </select>
+                <%= error_tag f, :status %>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <input type="submit" value="Save" class="btn btn-primary pull-right push-bottom" data-loading-text="Loading...">
+        </div>
+    </div>
+<% end %>
