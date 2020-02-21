@@ -8,8 +8,11 @@ defmodule Shop.Products do
 
   alias Shop.Products.Product
 
-  def list_products do
-    Repo.all(Product)
+  def list_products(params) do
+    Product
+    |> order_by(desc: :inserted_at)
+    |> preload([:category, :images])
+    |> Repo.paginate(params)
   end
 
   def get_product!(id), do: Repo.get!(Product, id)

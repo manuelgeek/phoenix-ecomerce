@@ -5,11 +5,28 @@
 # It is also run when you use `mix ecto.setup` or `mix ecto.reset`
 #
 
+Faker.start()
+
 users = [
-  %{email: "jane.doe@example.com", password: "password"},
-  %{email: "john.smith@example.org", password: "password"}
+  %{email: "emashmagak@gmail.com", name: "Manu Geek", phone: "0724540039", password: "password"},
+  %{email: "john.smith@example.org", name: "Manu Geek", phone: "0724540099", password: "password"}
 ]
 
 for user <- users do
   {:ok, _} = Shop.Accounts.create_user(user)
+end
+
+for a <- 0..4 do
+    cat = Faker.Lorem.word()
+    slg = Shop.Helpers.Helper.slugified_title(cat)
+    {:ok, category} = Shop.Categories.create_category(%{name: cat, slug: slg})
+    for s <- 0..10 do
+        name = Faker.Lorem.sentence(2)
+        slug = Shop.Helpers.Helper.slugified_title(name)
+        prod = %{name: name, slug: slug, description: Faker.Lorem.paragraph(), price: Enum.random(10..100), category_id: category.id}
+        {:ok, product} = Shop.Products.create_product(prod)
+        for i <- 0..2 do
+            {:ok, product} = Shop.Products.create_product_image(%{name: "/dist/img/products/product-1.jpg", product_id: product.id})
+        end
+    end
 end

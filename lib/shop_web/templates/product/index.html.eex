@@ -1,34 +1,33 @@
-<h1>Listing Products</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Slug</th>
-      <th>Price</th>
-      <th>Status</th>
-      <th>Description</th>
-
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
-<%= for product <- @products do %>
-    <tr>
-      <td><%= product.name %></td>
-      <td><%= product.slug %></td>
-      <td><%= product.price %></td>
-      <td><%= product.status %></td>
-      <td><%= product.description %></td>
-
-      <td>
-        <span><%= link "Show", to: Routes.product_path(@conn, :show, product) %></span>
-        <span><%= link "Edit", to: Routes.product_path(@conn, :edit, product) %></span>
-        <span><%= link "Delete", to: Routes.product_path(@conn, :delete, product), method: :delete, data: [confirm: "Are you sure?"] %></span>
-      </td>
-    </tr>
-<% end %>
-  </tbody>
-</table>
-
-<span><%= link "New Product", to: Routes.product_path(@conn, :new) %></span>
+<div class="container">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-6">
+          <h1 class="shorter"><strong>Shop</strong></h1>
+          <%# <p>Showing 1–9 of 25 results.</p> %>
+        </div>
+      </div>
+      <div class="row">
+        <ul class="products product-thumb-info-list" data-plugin-masonry data-plugin-options='{"layoutMode": "fitRows"}'>
+          <%= if @page.total_entries > 0 do %>
+            <%= render_many @products, ShopWeb.ProductView, "_product.html", conn: @conn %>
+          <% else %>
+            <article class="post post-large text-center">
+              <h3>No Products yet</h3>
+            </article>
+          <% end %>
+        </ul>
+      </div>
+      <%= if @page.total_entries > 0 do %>
+        <div class="row">
+          <div class="col-md-12">
+            <ul class="pagination pagination-lg pull-right">
+              <%= pagination_links @page %>
+            </ul>
+          </div>
+        </div>
+      <%= end %>
+    </div>
+    <%= render ShopWeb.PartialsView, "_aside.html", assigns %>
+  </div>
+</div>

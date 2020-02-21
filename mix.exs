@@ -20,7 +20,7 @@ defmodule Shop.MixProject do
   def application do
     [
       mod: {Shop.Application, []},
-      extra_applications: [:logger, :runtime_tools]
+      extra_applications: [:logger, :runtime_tools, :scrivener_ecto]
     ]
   end
 
@@ -45,7 +45,10 @@ defmodule Shop.MixProject do
       {:phauxth, "~> 2.3"},
       {:bcrypt_elixir, "~> 2.0"},
       {:plug_cowboy, "~> 2.0"},
-      {:timex, "~> 3.5"}
+      {:timex, "~> 3.5"},
+      {:faker, "~> 0.13"},
+      {:scrivener_ecto, "~> 2.0"},
+      {:scrivener_html, "~> 1.8"}
     ]
   end
 

@@ -4,9 +4,9 @@ defmodule ShopWeb.ProductController do
   alias Shop.Products
   alias Shop.Products.Product
 
-  def index(conn, _params) do
-    products = Products.list_products()
-    render(conn, "index.html", products: products)
+  def index(conn, params) do
+    page = Products.list_products(params)
+    render(conn, "index.html", products: page.entries, page: page)
   end
 
   def new(conn, _params) do

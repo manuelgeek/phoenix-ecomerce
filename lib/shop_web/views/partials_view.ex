@@ -1,3 +1,3 @@
-defmodule ShopWeb.Views.PartialsView do
+defmodule ShopWeb.PartialsView do
   use ShopWeb, :view
 end

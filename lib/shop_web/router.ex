@@ -24,12 +24,12 @@ defmodule ShopWeb.Router do
     post "/login", SessionController, :create
     post "/logout", SessionController, :delete
 
-    get "/", PageController, :index
+    get "/", ProductController, :index
     resources "/users", UserController, except: [:new, :create, :index]
     resources "/categories", CategoryController
-    resources "/products", CategoryController
+    resources "/products", ProductController
     # resources "/sessions", SessionController, only: [:new, :create, :delete]
-    
+
     # get "/*path", GlobRouter, []
   end
 
@@ -44,7 +44,7 @@ defmodule ShopWeb.GlobRouter do
 
   def call(%Plug.Conn{request_path: path} = conn, _opts) do
     cond do
-      Regex.match?(~r{[\/\w\.-]} ,path) -> to(conn, ShopWeb.PageController, :index)
+      Regex.match?(~r{[\/\w\.-]}, path) -> to(conn, ShopWeb.PageController, :index)
       true -> raise Phoenix.Router.NoRouteError, conn: conn, router: Router
     end
   end

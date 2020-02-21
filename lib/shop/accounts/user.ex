@@ -37,7 +37,7 @@ defmodule Shop.Accounts.User do
   def create_changeset(%__MODULE__{} = user, attrs) do
     user
     |> cast(attrs, [:email, :name, :phone, :password])
-    |> validate_required([:email, :password])
+    |> validate_required([:email, :name, :phone, :password])
     |> unique_email
     |> unique_phone_no
     |> validate_password(:password)

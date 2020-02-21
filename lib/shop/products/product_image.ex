@@ -13,7 +13,7 @@ defmodule Shop.Products.ProductImage do
   @doc false
   def changeset(product_image, attrs) do
     product_image
-    |> cast(attrs, [:name])
-    |> validate_required([:name])
+    |> cast(attrs, [:name, :product_id])
+    |> validate_required([:name, :product_id])
   end
 end
