@@ -5,7 +5,7 @@ defmodule ShopWeb.UserController do
 
   alias Phauxth.Log
   alias Shop.{Accounts, Accounts.User}
-  alias Shop.{Sessions, Sessions.Session}
+  alias Shop.{Sessions}
   alias Phauxth.Remember
 
   # the following plugs are defined in the controllers/authorize.ex file

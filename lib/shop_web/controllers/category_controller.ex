@@ -44,7 +44,7 @@ defmodule ShopWeb.CategoryController do
     category = Categories.get_category!(id)
 
     case Categories.update_category(category, category_params) do
-      {:ok, category} ->
+      {:ok, _category} ->
         conn
         |> put_flash(:info, "Category updated successfully.")
         |> redirect(to: Routes.category_path(conn, :index))
