@@ -27,7 +27,7 @@ defmodule ShopWeb.ProductController do
   end
 
   def show(conn, %{"id" => id}) do
-    product = Products.get_product!(id)
+    product = Products.get_by_slug!(id)
     render(conn, "show.html", product: product)
   end
 

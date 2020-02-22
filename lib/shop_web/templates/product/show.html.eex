@@ -1,33 +1,68 @@
-<h1>Show Product</h1>
-
-<ul>
-
-  <li>
-    <strong>Name:</strong>
-    <%= @product.name %>
-  </li>
-
-  <li>
-    <strong>Slug:</strong>
-    <%= @product.slug %>
-  </li>
-
-  <li>
-    <strong>Price:</strong>
-    <%= @product.price %>
-  </li>
-
-  <li>
-    <strong>Status:</strong>
-    <%= @product.status %>
-  </li>
-
-  <li>
-    <strong>Description:</strong>
-    <%= @product.description %>
-  </li>
-
-</ul>
-
-<span><%= link "Edit", to: Routes.product_path(@conn, :edit, @product) %></span>
-<span><%= link "Back", to: Routes.product_path(@conn, :index) %></span>
+<div class="container">
+  <hr class="tall">
+  <div class="row">
+    <div class="col-md-9">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="owl-carousel" data-plugin-options='{"items": 1}'>
+            <%= for image <- @product.images do %>
+              <div>
+                <div class="thumbnail">
+                  <img alt="prod" class="img-responsive img-rounded" src="<%= Routes.static_path(@conn, image.name) %>">
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="summary entry-summary">
+            <h1 class="shorter"><strong><%= @product.name %></strong></h1>
+            <div class="review_num">
+              <span class="count" itemprop="ratingCount">2</span> reviews
+            </div>
+            <div title="Rated 5.00 out of 5" class="star-rating">
+              <span style="width:100%"><strong class="rating">5.00</strong> out of 5</span>
+            </div>
+            <p class="price">
+              <span class="amount">Ksh. <%= @product.price %></span>
+            </p>
+            <p class="taller">
+            <%= @product.description %>
+             </p>
+            <form enctype="multipart/form-data" method="post" class="cart">
+              <div class="quantity">
+                <input type="button" class="minus" value="-">
+                <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
+                <input type="button" class="plus" value="+">
+              </div>
+              <button href="#" class="btn btn-primary btn-icon">Add to cart</button>
+            </form>
+            <div class="product_meta">
+              <span class="posted_in">Category: <a rel="tag" href="#"><%= @product.category.name %></a></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="tabs tabs-product">
+            <ul class="nav nav-tabs">
+              <li><a class="active" href="#productReviews" data-toggle="tab">Reviews (2)</a></li>
+            </ul>
+            <div class="tab-content ">
+              <div class="tab-pane active1" id="productReviews">
+                <%= render ShopWeb.PartialsView, "products/reviews/_list.html", assigns %>
+                <hr class="tall">
+                <h4>Add a review</h4>
+                <%= render ShopWeb.PartialsView, "products/reviews/_create.html", assigns %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="tall" />
+      <%= render ShopWeb.PartialsView, "_related.html", assigns %>
+    </div>
+    <%= render ShopWeb.PartialsView, "_aside.html", assigns %>
+  </div>
+</div>

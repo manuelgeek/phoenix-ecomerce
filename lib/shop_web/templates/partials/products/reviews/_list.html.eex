@@ -1,0 +1,21 @@
+<ul class="comments">
+  <li>
+    <div class="comment">
+      <div class="img-thumbnail">
+        <img class="avatar" alt="" src="/dist/img/avatar-2.jpg">
+      </div>
+      <div class="comment-block">
+        <div class="comment-arrow"></div>
+        <span class="comment-by">
+          <strong>John Doe</strong>
+          <span class="pull-right">
+            <div title="Rated 5.00 out of 5" class="star-rating">
+              <span style="width:100%"><strong class="rating">5.00</strong> out of 5</span>
+            </div>
+          </span>
+        </span>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae, gravida pellentesque urna varius vitae. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim ornare nisi, vitae mattis nulla ante id dui.</p>
+      </div>
+    </div>
+  </li>
+</ul>

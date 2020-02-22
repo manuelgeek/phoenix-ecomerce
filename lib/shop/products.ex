@@ -17,6 +17,10 @@ defmodule Shop.Products do
 
   def get_product!(id), do: Repo.get!(Product, id)
 
+  def get_by_slug!(slug) do
+    Repo.get_by!(Product, slug: slug) |> Repo.preload([:category, :images])
+  end
+
   def create_product(attrs \\ %{}) do
     %Product{}
     |> Product.changeset(attrs)
