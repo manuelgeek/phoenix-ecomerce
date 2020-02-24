@@ -7,9 +7,9 @@
 	export default {
 		props: ["item"],
 		methods: {
-			addToCart(item) {
-				console.log(this.item);
-				this.$store.dispatch("addToCart", this.item);
+			addToCart() {
+				let item = JSON.parse(this.item);
+				this.$store.dispatch("addToCart", item);
 			}
 		}
 	};
