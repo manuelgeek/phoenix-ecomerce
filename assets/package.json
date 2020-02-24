@@ -7,8 +7,11 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "moment": "^2.24.0",
     "phoenix": "file:../deps/phoenix",
-    "phoenix_html": "file:../deps/phoenix_html"
+    "phoenix_html": "file:../deps/phoenix_html",
+    "vue-izitoast": "^1.2.1",
+    "vuex": "^3.1.2"
   },
   "devDependencies": {
     "@babel/core": "^7.0.0",

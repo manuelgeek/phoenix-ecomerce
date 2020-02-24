@@ -20,10 +20,17 @@ if (token) {
 import Vue from "vue";
 import App from "./App";
 import Message from './components/Message'
+import AddToCart from './components/AddToCart'
+import store from './store'
+
+import VueIziToast from 'vue-izitoast';
+Vue.use(VueIziToast, { position: 'topRight' });
 
 Vue.component('message', Message);
+Vue.component('addToCart', AddToCart);
 
 new Vue({
+    store,
     el: "#app"
 });
 // new Vue({
