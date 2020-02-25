@@ -48,6 +48,5 @@ export function initialize(_store) {
         return Promise.reject(error);
     });
 
-    // axios.defaults.baseURL = process.env.VUE_APP_API_BASE_URL;
-
+    axios.defaults.baseURL = "/api" // process.env.VUE_APP_API_BASE_URL;
 }
