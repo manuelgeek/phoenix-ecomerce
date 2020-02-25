@@ -1,0 +1,26 @@
+<a href="shop-product-sidebar.html">
+    <span class="onsale"><%= percentage_off(@product.selling_price, @product.marked_price) %>% </span>
+  </a>
+  <span class="product-thumb-info">
+    <a style="cursor: pointer;" class="add-to-cart-product">
+      <add-to-cart :item="<%= map_to_json @product %>"/>
+    </a>
+    <a href="<%= Routes.product_path(@conn, :show, @product.slug) %>">
+      <span class="product-thumb-info-image">
+        <span class="product-thumb-info-act">
+          <span class="product-thumb-info-act-left"><em>View</em></span>
+          <span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
+        </span>
+        <img alt="prod" class="img-responsive" src="<%= Routes.static_path(@conn, img(@product.images)) %>">
+      </span>
+    </a>
+    <span class="product-thumb-info-content">
+      <a href="<%= Routes.product_path(@conn, :show, @product.slug) %>">
+        <h4><%= @product.name %></h4>
+        <span class="price">
+          <del><span class="amount">Ksh. <%= @product.marked_price %></span></del>
+          <ins><span class="amount">Ksh. <%= @product.selling_price %></span></ins>
+        </span>
+      </a>
+    </span>
+  </span>

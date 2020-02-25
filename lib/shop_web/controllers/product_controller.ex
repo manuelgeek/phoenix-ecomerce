@@ -3,10 +3,24 @@ defmodule ShopWeb.ProductController do
 
   alias Shop.Products
   alias Shop.Products.Product
+  alias Shop.Categories
+  alias Shop.Helpers.Helper
 
   def index(conn, params) do
     page = Products.list_products(params)
     render(conn, "index.html", products: page.entries, page: page)
+  end
+
+  def category(conn, params) do
+    try do
+      category = Categories.get_by_slug!(params["category"])
+      page = Products.list_category_products(params, category.name)
+      render(conn, "index.html", products: page.entries, page: page, title: category.name)
+    rescue
+      Ecto.NoResultsError ->
+        {:error, :not_found, "No result found"}
+        Helper.nothing_found(conn)
+    end
   end
 
   def new(conn, _params) do

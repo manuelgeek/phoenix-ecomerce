@@ -1,0 +1,23 @@
+<h1>Show Pickup</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @pickup.name %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @pickup.status %>
+  </li>
+
+  <li>
+    <strong>Delivery fee:</strong>
+    <%= @pickup.delivery_fee %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.pickup_path(@conn, :edit, @pickup) %></span>
+<span><%= link "Back", to: Routes.pickup_path(@conn, :index) %></span>

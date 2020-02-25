@@ -1,28 +1,3 @@
 <li class="col-md-4 col-sm-6 col-xs-12 product">
-  <%# <a href="shop-product-sidebar.html">
-    <span class="onsale">Sale!</span>
-  </a> %>
-  <span class="product-thumb-info">
-    <a href="shop-cart.html" class="add-to-cart-product">
-      <span><i class="fa fa-shopping-cart"></i> Add to Cart</span>
-    </a>
-    <a href="<%= Routes.product_path(@conn, :show, @product.slug) %>">
-      <span class="product-thumb-info-image">
-        <span class="product-thumb-info-act">
-          <span class="product-thumb-info-act-left"><em>View</em></span>
-          <span class="product-thumb-info-act-right"><em><i class="fa fa-plus"></i> Details</em></span>
-        </span>
-        <img alt="prod" class="img-responsive" src="<%= Routes.static_path(@conn, img(@product.images)) %>">
-      </span>
-    </a>
-    <span class="product-thumb-info-content">
-      <a href="<%= Routes.product_path(@conn, :show, @product.slug) %>">
-        <h4><%= @product.name %></h4>
-        <span class="price">
-          <ins><span class="amount">Ksh. <%= @product.price %></span></ins>
-          <%# <del><span class="amount">$299</span></ins> %>
-        </span>
-      </a>
-    </span>
-  </span>
+  <%= render ShopWeb.PartialsView, "products/_item.html", conn: @conn, product: @product %>
 </li>

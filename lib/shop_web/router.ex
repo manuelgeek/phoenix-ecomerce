@@ -25,9 +25,13 @@ defmodule ShopWeb.Router do
     post "/logout", SessionController, :delete
 
     get "/", ProductController, :index
+    get "/categories/:category", ProductController, :category
     resources "/users", UserController, except: [:new, :create, :index]
     resources "/categories", CategoryController
     resources "/products", ProductController
+    resources "/towns", TownController
+    resources "/pickups", PickupController
+    get "/cart", OrderController, :cart
     # resources "/sessions", SessionController, only: [:new, :create, :delete]
 
     # get "/*path", GlobRouter, []

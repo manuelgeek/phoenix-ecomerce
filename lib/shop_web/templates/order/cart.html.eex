@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="row featured-boxes">
+        <div class="col-md-12">
+          <div class="featured-box featured-box-secundary featured-box-cart">
+            <div class="box-content">
+              <form method="post" action="">
+                <cart/>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <cart-totals/>
+    </div>
+  </div>
+</div>

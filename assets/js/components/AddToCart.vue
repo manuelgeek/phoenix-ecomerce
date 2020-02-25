@@ -8,8 +8,7 @@
 		props: ["item"],
 		methods: {
 			addToCart() {
-				let item = JSON.parse(this.item);
-				this.$store.dispatch("addToCart", item);
+				this.$store.dispatch("addToCart", {item: this.item, count: 1});
 			}
 		}
 	};

@@ -9,68 +9,30 @@
       </div>
     </form>
     <hr />
-    <h5>Tags</h5>
-    <a href="#"><span class="label label-dark">Nike</span></a>
-    <a href="#"><span class="label label-dark">Travel</span></a>
-    <a href="#"><span class="label label-dark">Sport</span></a>
-    <a href="#"><span class="label label-dark">TV</span></a>
-    <a href="#"><span class="label label-dark">Books</span></a>
-    <a href="#"><span class="label label-dark">Tech</span></a>
-    <a href="#"><span class="label label-dark">Adidas</span></a>
-    <a href="#"><span class="label label-dark">Promo</span></a>
-    <a href="#"><span class="label label-dark">Reading</span></a>
-    <a href="#"><span class="label label-dark">Social</span></a>
-    <a href="#"><span class="label label-dark">Books</span></a>
-    <a href="#"><span class="label label-dark">Tech</span></a>
-    <a href="#"><span class="label label-dark">New</span></a>
+    <h5>Categories</h5>
+    <%= for category <- categories do %>
+      <a href="<%= Routes.product_path(@conn, :category, category.slug) %>"><span class="label label-dark"><%= category.name %></span></a>
+    <% end %>
     <hr />
     <h5>Top Rated Products</h5>
     <ul class="simple-post-list">
-      <li>
-        <div class="post-image">
-          <div class="img-thumbnail">
-            <a href="shop-product-sidebar.html">
-              <img alt="" width="60" height="60" class="img-responsive" src="/dist/img/products/product-1.jpg">
-            </a>
+      <%= for product <- latest_products do %>
+        <li>
+          <div class="post-image">
+            <div class="img-thumbnail">
+              <a href="<%= Routes.product_path(@conn, :show, product.slug) %>">
+                <img alt="prod" width="60" height="60" class="img-responsive" src="<%= Routes.static_path(@conn, img(product.images)) %>">
+              </a>
+            </div>
           </div>
-        </div>
-        <div class="post-info">
-          <a href="shop-product-sidebar.html">Photo Camera</a>
-          <div class="post-meta">
-            $299
+          <div class="post-info">
+            <a href="<%= Routes.product_path(@conn, :show, product.slug) %>"><%= product.name %></a>
+            <div class="post-meta">
+              Ksh. <%= product.selling_price %>
+            </div>
           </div>
-        </div>
-      </li>
-      <li>
-        <div class="post-image">
-          <div class="img-thumbnail">
-            <a href="shop-product-sidebar.html">
-              <img alt="" width="60" height="60" class="img-responsive" src="/dist/img/products/product-2.jpg">
-            </a>
-          </div>
-        </div>
-        <div class="post-info">
-          <a href="shop-product-sidebar.html">Golf Bag</a>
-          <div class="post-meta">
-            $72
-          </div>
-        </div>
-      </li>
-      <li>
-        <div class="post-image">
-          <div class="img-thumbnail">
-            <a href="shop-product-sidebar.html">
-              <img alt="" width="60" height="60" class="img-responsive" src="/dist/img/products/product-3.jpg">
-            </a>
-          </div>
-        </div>
-        <div class="post-info">
-          <a href="shop-product-sidebar.html">Workout</a>
-          <div class="post-meta">
-            $60
-          </div>
-        </div>
-      </li>
+        </li>
+      <% end %>
     </ul>
   </aside>
 </div>

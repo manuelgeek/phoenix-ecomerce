@@ -4,6 +4,7 @@ defmodule Shop.Accounts.User do
   import Ecto.Changeset
 
   alias Shop.Sessions.Session
+  alias Shop.Orders.Order
 
   @type t :: %__MODULE__{
           id: integer,
@@ -23,6 +24,7 @@ defmodule Shop.Accounts.User do
     field :password, :string, virtual: true
     field :password_hash, :string
     has_many :sessions, Session, on_delete: :delete_all
+    has_many :orders, Order, on_delete: :delete_all
 
     timestamps()
   end

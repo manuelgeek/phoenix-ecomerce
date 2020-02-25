@@ -21,6 +21,37 @@ defmodule Shop.Products do
     Repo.get_by!(Product, slug: slug) |> Repo.preload([:category, :images])
   end
 
+  def get_latest_products do
+    query =
+      from p in Product,
+        order_by: [desc: p.inserted_at],
+        limit: 4
+
+    Repo.all(query)
+    |> Repo.preload([:category, :images])
+  end
+
+  def list_category_products(params, category) do
+    Product
+    |> order_by(desc: :inserted_at)
+    |> join(:left, [p], c in assoc(p, :category))
+    |> where([p, c], c.slug == ^category)
+    |> preload([p, c], [:category, :images])
+    |> Repo.paginate(params)
+  end
+
+  def get_related_products(category) do
+    query =
+      from p in Product,
+        left_join: c in assoc(p, :category),
+        group_by: p.id,
+        where: c.slug == ^category,
+        order_by: [desc: p.inserted_at],
+        limit: 4
+
+    Repo.all(query) |> Repo.preload([:category, :images])
+  end
+
   def create_product(attrs \\ %{}) do
     %Product{}
     |> Product.changeset(attrs)

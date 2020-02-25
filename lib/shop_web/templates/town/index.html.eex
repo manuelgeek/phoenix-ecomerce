@@ -1,0 +1,28 @@
+<h1>Listing Towns</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for town <- @towns do %>
+    <tr>
+      <td><%= town.name %></td>
+      <td><%= town.status %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.town_path(@conn, :show, town) %></span>
+        <span><%= link "Edit", to: Routes.town_path(@conn, :edit, town) %></span>
+        <span><%= link "Delete", to: Routes.town_path(@conn, :delete, town), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Town", to: Routes.town_path(@conn, :new) %></span>

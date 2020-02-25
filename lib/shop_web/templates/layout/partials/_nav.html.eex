@@ -70,52 +70,9 @@
           <a href="/login">Login</a>
         </li>
       <% end %>
-      <li class="dropdown mega-menu-item mega-menu-shop">
-        <a class="dropdown-toggle mobile-redirect" href="shop-cart.html">
-          <i class="fa fa-shopping-cart"></i> Cart (1) - $299
-          <i class="fa fa-angle-down"></i>
-        </a>
-        <ul class="dropdown-menu">
-          <li>
-            <div class="mega-menu-content">
-              <div class="row">
-                <div class="col-md-12">
-                  <table cellspacing="0" class="cart">
-                    <tbody>
-                      <tr>
-                        <td class="product-thumbnail">
-                          <a href="shop-product-sidebar.html">
-                            <img width="100" height="100" alt="" class="img-responsive" src="/dist/img/products/product-1.jpg">
-                          </a>
-                        </td>
-                        <td class="product-name">
-                          <a href="shop-product-sidebar.html">Photo Camera<br>
-                            <span class="amount"><strong>$299</strong></span></a>
-                        </td>
-                        <td class="product-actions">
-                          <a title="Remove this item" class="remove" href="#">
-                            <i class="fa fa-times"></i>
-                          </a>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td class="actions" colspan="6">
-                          <div class="actions-continue">
-                            <input type="submit" value="View All" class="btn btn-default">
-                            <input type="submit" value="Proceed to Checkout →" name="proceed" class="btn pull-right btn-primary">
-                          </div>
-                        </td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </li>
-        </ul>
-      </li>
-    </ul>
-  </nav>
-</div>
+      <cart-nav/>
+      </ul>
+    </nav>
+  </div>
 </div>
 </header>

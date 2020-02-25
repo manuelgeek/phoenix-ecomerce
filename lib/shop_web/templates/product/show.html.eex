@@ -24,32 +24,28 @@
               <span style="width:100%"><strong class="rating">5.00</strong> out of 5</span>
             </div>
             <p class="price">
-              <span class="amount">Ksh. <%= @product.price %></span>
+              <span class="amount">Ksh. <%= @product.selling_price %></span>
             </p>
             <p class="taller">
-            <%= @product.description %>
-             </p>
-            <form enctype="multipart/form-data" method="post" class="cart">
-              <div class="quantity">
-                <input type="button" class="minus" value="-">
-                <input type="text" class="input-text qty text" title="Qty" value="1" name="quantity" min="1" step="1">
-                <input type="button" class="plus" value="+">
+              <%= @product.description %>
+            </p>
+            <add-to-cart-multiple :item="<%= map_to_json @product %>"/>
+              <div class="product_meta">
+                <span class="posted_in">Category: <a rel="tag" href="<%= Routes.product_path(@conn, :category, @product.category.slug) %>"><%= @product.category.name %></a></span>
               </div>
-              <button href="#" class="btn btn-primary btn-icon">Add to cart</button>
-            </form>
-            <div class="product_meta">
-              <span class="posted_in">Category: <a rel="tag" href="#"><%= @product.category.name %></a></span>
             </div>
           </div>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-md-12">
-          <div class="tabs tabs-product">
-            <ul class="nav nav-tabs">
-              <li><a class="active" href="#productReviews" data-toggle="tab">Reviews (2)</a></li>
-            </ul>
-            <div class="tab-content ">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="tabs tabs-product">
+              <ul class="nav nav-tabs">
+                <li><a class="active" href="#productReviews" data-toggle="tab">Reviews (2)</a></li>
+              </ul>
+              <div class="tab-content ">
+                <div class="tab-pane active" id="productReview">
+                  <a class="active" href="#productReviews" data-toggle="tab">Click here to see/make Reviews</a></<a>
+              </div>
               <div class="tab-pane active1" id="productReviews">
                 <%= render ShopWeb.PartialsView, "products/reviews/_list.html", assigns %>
                 <hr class="tall">

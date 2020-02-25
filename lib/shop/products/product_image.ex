@@ -2,6 +2,7 @@ defmodule Shop.Products.ProductImage do
   use Ecto.Schema
   import Ecto.Changeset
   alias Shop.Products.Product
+  @derive {Poison.Encoder, only: [:name]}
 
   schema "product_images" do
     field :name, :string

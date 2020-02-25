@@ -1,0 +1,5 @@
+<h1>Edit Pickup</h1>
+
+<%= render "form.html", Map.put(assigns, :action, Routes.pickup_path(@conn, :update, @pickup)) %>
+
+<span><%= link "Back", to: Routes.pickup_path(@conn, :index) %></span>

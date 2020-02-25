@@ -33,6 +33,11 @@
 												</span>
 											</a>
 										</td>
+                                        <td>
+                                            <div class="amount">
+                                                <b>{{quantity(cart[0].item.id)}}</b>
+                                            </div>
+                                        </td>
 										<td class="product-actions">
 											<a @click.prevent="removeFromCart(cart[0].item)" title="Remove this item" class="remove" href="#">
 												<i class="fa fa-times"></i>
@@ -42,10 +47,10 @@
 									<tr>
 										<td class="actions" colspan="6">
 											<div class="actions-continue">
-												<input type="submit" value="View All" class="btn btn-default" />
-												<input
+												<!-- <input @click="cartRedirect" type="submit" value="View All" class="btn btn-default" /> -->
+												<input @click="cartRedirect"
 													type="submit"
-													value="Proceed to Checkout →"
+													value="Proceed to Cart →"
 													name="proceed"
 													class="btn pull-right btn-primary"
 												/>
@@ -67,7 +72,18 @@
 		methods: {
 			removeFromCart(item) {
 				this.$store.dispatch("removeFromCart", item);
-			}
+            },
+            quantity(id){
+                let record = this.cart.find(p => p.item.id === id)
+                if(record){
+                    return record.quantity ;
+                }else{
+                    return 0 ;
+                }
+            },
+            cartRedirect(){
+                return window.location.href = '/cart'
+            }
 		},
 		computed: {
 			baseUrl() {

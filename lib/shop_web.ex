@@ -44,6 +44,14 @@ defmodule ShopWeb do
       import ShopWeb.ErrorHelpers
       import ShopWeb.Gettext
       alias ShopWeb.Router.Helpers, as: Routes
+
+      def map_to_json(body) when is_binary(body), do: body
+
+      def map_to_json(body) do
+        body
+        # Turns map into JSON
+        |> Poison.encode!()
+      end
     end
   end
 

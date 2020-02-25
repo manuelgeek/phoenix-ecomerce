@@ -17,14 +17,14 @@ export default new Vuex.Store({
             state.added = [];
         },
         ADD_TO_CART(state, payload) {
-            const record = state.added.find(p => p.item.id === payload.id)
+            const record = state.added.find(p => p.item.id === payload.item.id)
             if (!record) {
                 state.added.push({
-                    item: payload,
-                    quantity: 1,
+                    item: payload.item,
+                    quantity: payload.count,
                 })
             } else {
-                record.quantity++
+                record.quantity = record.quantity + payload.count
             }
 
             localStorage.setItem(CART_NAME, JSON.stringify(state.added));
@@ -62,7 +62,7 @@ export default new Vuex.Store({
     },
     actions: {
         addToCart({ commit }, payload) {
-            commit('ADD_TO_CART', payload)
+            commit('ADD_TO_CART', { item: payload.item, count: payload.count })
         },
         removeFromCart({ commit }, payload) {
             commit('REMOVE_FROM_CART', payload);

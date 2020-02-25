@@ -3,8 +3,8 @@
     <div class="col-md-9">
       <div class="row">
         <div class="col-md-6">
-          <h1 class="shorter"><strong>Shop</strong></h1>
-          <%# <p>Showing 1–9 of 25 results.</p> %>
+          <h1 class="shorter"><strong><%= if assigns[:title], do: @title, else: "Shop" %></strong></h1>
+          <p>Showing page <%= @page.page_number %> of <%= @page.total_entries %> products.</p>
         </div>
       </div>
       <div class="row">

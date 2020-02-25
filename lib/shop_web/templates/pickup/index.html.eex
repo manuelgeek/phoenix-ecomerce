@@ -1,0 +1,30 @@
+<h1>Listing Pickups</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Status</th>
+      <th>Delivery fee</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+<%= for pickup <- @pickups do %>
+    <tr>
+      <td><%= pickup.name %></td>
+      <td><%= pickup.status %></td>
+      <td><%= pickup.delivery_fee %></td>
+
+      <td>
+        <span><%= link "Show", to: Routes.pickup_path(@conn, :show, pickup) %></span>
+        <span><%= link "Edit", to: Routes.pickup_path(@conn, :edit, pickup) %></span>
+        <span><%= link "Delete", to: Routes.pickup_path(@conn, :delete, pickup), method: :delete, data: [confirm: "Are you sure?"] %></span>
+      </td>
+    </tr>
+<% end %>
+  </tbody>
+</table>
+
+<span><%= link "New Pickup", to: Routes.pickup_path(@conn, :new) %></span>

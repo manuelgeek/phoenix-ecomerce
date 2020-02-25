@@ -1,0 +1,18 @@
+<h1>Show Town</h1>
+
+<ul>
+
+  <li>
+    <strong>Name:</strong>
+    <%= @town.name %>
+  </li>
+
+  <li>
+    <strong>Status:</strong>
+    <%= @town.status %>
+  </li>
+
+</ul>
+
+<span><%= link "Edit", to: Routes.town_path(@conn, :edit, @town) %></span>
+<span><%= link "Back", to: Routes.town_path(@conn, :index) %></span>

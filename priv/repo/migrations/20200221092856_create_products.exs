@@ -5,7 +5,8 @@ defmodule Shop.Repo.Migrations.CreateProducts do
     create table(:products) do
       add :name, :string
       add :slug, :string
-      add :price, :integer
+      add :marked_price, :integer
+      add :selling_price, :integer
       add :status, :boolean, default: true, null: false
       add :description, :text
 

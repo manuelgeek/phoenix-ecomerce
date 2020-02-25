@@ -3,11 +3,15 @@ defmodule Shop.Products.Product do
   import Ecto.Changeset
   alias Shop.Categories.Category
   alias Shop.Products.ProductImage
+  #   @derive {Jason.Encoder, only: [:id, :name, :category]}
+  @derive {Poison.Encoder,
+           only: [:id, :name, :slug, :marked_price, :selling_price, :status, :description, :images]}
 
   schema "products" do
     field :description, :string
     field :name, :string
-    field :price, :integer
+    field :marked_price, :integer
+    field :selling_price, :integer
     field :slug, :string
     field :status, :boolean, default: true
     belongs_to :category, Category
@@ -19,8 +23,24 @@ defmodule Shop.Products.Product do
   @doc false
   def changeset(product, attrs) do
     product
-    |> cast(attrs, [:name, :slug, :price, :status, :description, :category_id])
-    |> validate_required([:name, :slug, :price, :status, :description, :category_id])
+    |> cast(attrs, [
+      :name,
+      :slug,
+      :marked_price,
+      :selling_price,
+      :status,
+      :description,
+      :category_id
+    ])
+    |> validate_required([
+      :name,
+      :slug,
+      :marked_price,
+      :selling_price,
+      :status,
+      :description,
+      :category_id
+    ])
     |> unique_constraint(:slug)
   end
 end

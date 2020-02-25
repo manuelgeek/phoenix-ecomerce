@@ -19,12 +19,12 @@ defmodule ShopWeb.SessionController do
         conn
         |> add_session(user, params)
         |> put_flash(:info, "User successfully logged in.")
-        |> redirect(to: get_session(conn, :request_path) || Routes.page_path(conn, :index))
+        |> redirect(to: get_session(conn, :request_path) || Routes.product_path(conn, :index))
 
       {:error, message} ->
         conn
         |> put_flash(:error, message)
-        |> redirect(to: Routes.page_path(conn, :index))
+        |> redirect(to: Routes.product_path(conn, :index))
     end
   end
 
@@ -37,12 +37,12 @@ defmodule ShopWeb.SessionController do
         |> delete_session(:phauxth_session_id)
         |> Remember.delete_rem_cookie()
         |> put_flash(:info, "User successfully logged out.")
-        |> redirect(to: Routes.page_path(conn, :index))
+        |> redirect(to: Routes.product_path(conn, :index))
 
       _ ->
         conn
         |> put_flash(:error, "Unauthorized")
-        |> redirect(to: Routes.page_path(conn, :index))
+        |> redirect(to: Routes.product_path(conn, :index))
     end
   end
 

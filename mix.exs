@@ -48,7 +48,8 @@ defmodule Shop.MixProject do
       {:timex, "~> 3.5"},
       {:faker, "~> 0.13"},
       {:scrivener_ecto, "~> 2.0"},
-      {:scrivener_html, "~> 1.8"}
+      {:scrivener_html, "~> 1.8"},
+      {:poison, "~> 3.1"}
     ]
   end
 

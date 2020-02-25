@@ -22,6 +22,9 @@ import App from "./App";
 import Message from './components/Message'
 import AddToCart from './components/AddToCart'
 import CartNav from './components/CartNav'
+import AddToCartMultiple from './components/AddToCartMultiple'
+import Cart from './components/Cart'
+import CartTotals from './components/CartTotals'
 import store from './store'
 
 import VueIziToast from 'vue-izitoast';
@@ -30,6 +33,9 @@ Vue.use(VueIziToast, { position: 'topRight' });
 Vue.component('message', Message);
 Vue.component('addToCart', AddToCart);
 Vue.component('cartNav', CartNav);
+Vue.component('addToCartMultiple', AddToCartMultiple);
+Vue.component('cart', Cart);
+Vue.component('cartTotals', CartTotals);
 
 new Vue({
     store,
