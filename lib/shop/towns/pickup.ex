@@ -2,6 +2,7 @@ defmodule Shop.Towns.Pickup do
   use Ecto.Schema
   import Ecto.Changeset
   alias Shop.Towns.Town
+  @derive {Jason.Encoder, only: [:id, :name, :delivery_fee]}
 
   schema "pickups" do
     field :delivery_fee, :integer

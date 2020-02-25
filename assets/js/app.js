@@ -26,6 +26,9 @@ import AddToCartMultiple from './components/AddToCartMultiple'
 import Cart from './components/Cart'
 import CartTotals from './components/CartTotals'
 import store from './store'
+import { initialize } from "./helpers/initialization"
+
+initialize(store)
 
 import VueIziToast from 'vue-izitoast';
 Vue.use(VueIziToast, { position: 'topRight' });

@@ -27,6 +27,8 @@
   <link rel="stylesheet" href="/dist/css/skins/default.css">
   <!-- Theme Custom CSS -->
   <link rel="stylesheet" href="/dist/css/custom.css">
+  <link href="https://unpkg.com/nprogress@0.2.0/nprogress.css" rel="stylesheet" />
+  <script src="https://unpkg.com/nprogress@0.2.0/nprogress.js"></script>
   <!-- Head Libs -->
   <script src="/dist/vendor/modernizr/modernizr.js"></script>
   <!--[if IE]>

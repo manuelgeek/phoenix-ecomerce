@@ -38,8 +38,9 @@ defmodule ShopWeb.Router do
   end
 
   # Other scopes may use custom stacks.
-  scope "/api", ShopWeb do
+  scope "/api", ShopWeb.Api do
     pipe_through :api
+    get "/addresses", GeneralController, :addresses
   end
 end
 
