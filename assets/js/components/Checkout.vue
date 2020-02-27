@@ -21,7 +21,13 @@
 			</div>
 		</div>
 		<div class="actions-continue">
-			<input type="submit" value="Place Order" name="proceed" class="btn btn-lg btn-primary push-top" />
+			<input
+				type="button"
+				@click="makeOrder"
+				value="Place Order"
+				name="proceed"
+				class="btn btn-lg btn-primary push-top"
+			/>
 		</div>
 	</form>
 </template>
@@ -38,6 +44,11 @@
 			};
 		},
 		methods: {
+			makeOrder() {
+                console.log('jaja')
+                alert('Pending !!!')
+				this.$toast.info("Functionality Pending !");
+			},
 			quantity(id) {
 				let record = this.cart.find(p => p.item.id === id);
 				if (record) {
