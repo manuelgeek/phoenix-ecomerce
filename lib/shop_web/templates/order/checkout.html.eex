@@ -1,0 +1,87 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2 class="shorter"><strong>Checkout</strong></h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9">
+      <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                User Details
+              </a>
+            </h4>
+          </div>
+          <div id="collapseOne" class="accordion-body collapse in">
+            <div class="panel-body">
+              <form action="" id="" method="post">
+                <div class="row">
+                  <div class="form-group">
+                    <div class="col-md-6">
+                      <label>Name</label>
+                      <input type="text" value="<%= @current_user.name %>" readonly class="form-control">
+                    </div>
+                    <div class="col-md-6">
+                      <label>Phone No</label>
+                      <input type="text" value="<%= @current_user.phone %>" readonly class="form-control">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <div class="col-md-6">
+                      <label>Email</label>
+                      <input type="text" value="<%= @current_user.email %>" readonly class="form-control">
+                    </div>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title">
+              <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo">
+                Shipping Address
+              </a>
+            </h4>
+          </div>
+          <div id="collapseTwo" class="accordion-body collapse">
+            <div class="panel-body">
+              <checkout-address/>
+              </div>
+            </div>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-heading">
+              <h4 class="panel-title">
+                <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+                  Review & Payment
+                </a>
+              </h4>
+            </div>
+            <div id="collapseThree" class="accordion-body collapse">
+              <div class="panel-body">
+                <div>
+                  <checkout-cart/></div>
+                  <hr class="tall">
+                  <h4>Cart Totals</h4>
+                  <div>
+                    <checkout-total/>
+                    </div>
+                    <hr class="tall">
+                    <h4>Payment</h4>
+                    <checkout phone="<%= @current_user.phone %>" />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <h4>Cart Totals</h4>
+            <checkout-total/>
+            </div>
+          </div>
+        </div>

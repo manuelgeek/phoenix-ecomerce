@@ -9,7 +9,10 @@
 							<div class="row">
 								<div class="form-group">
 									<div class="col-md-12">
-										<label>City <sup class="text-danger">*</sup></label>
+										<label>
+											City
+											<sup class="text-danger">*</sup>
+										</label>
 										<select v-model="location" class="form-control">
 											<option selected value>Select City</option>
 											<option
@@ -24,7 +27,10 @@
 							<div class="row">
 								<div class="form-group">
 									<div class="col-md-12">
-										<label>Pickup Location <sup class="text-danger">*</sup></label>
+										<label>
+											Pickup Location
+											<sup class="text-danger">*</sup>
+										</label>
 										<select v-model="pickup" class="form-control">
 											<option selected value>Select Pick Up</option>
 											<option v-for="(pickup, $index) in pickups" :key="$index" :value="pickup">{{pickup.name}}</option>
@@ -73,8 +79,10 @@
 			</div>
 			<div class="col-md-12">
 				<div class="actions-continue">
-					<input  @click="checkOut" 
-						type="button" :disabled="shipping_fee === 0"
+					<input
+						@click="checkOut"
+						type="button"
+						:disabled="shipping_fee === 0"
 						value="Proceed to Checkout →"
 						name="proceed"
 						class="btn btn-lg btn-primary"
@@ -102,10 +110,15 @@
 				axios.get("/addresses").then(response => {
 					this.addresses = response.data.data;
 				});
-            }, 
-            checkOut(){
-                return window.location.href = "/checkout"
-            }
+			},
+			checkOut() {
+				this.$store
+					.dispatch("shippingDetails", {
+						location: this.location,
+						pickup: this.pickup
+					})
+					.then(e => (window.location.href = "/checkout"));
+			}
 		},
 		computed: {
 			baseUrl() {
@@ -125,8 +138,8 @@
 				}, 0);
 			},
 			shipping_fee() {
-                return this.pickup === null ? 0 : this.pickup.delivery_fee
-            }
+				return this.pickup === null ? 0 : this.pickup.delivery_fee;
+			}
 		},
 		watch: {
 			location: function(value) {

@@ -32,6 +32,7 @@ defmodule ShopWeb.Router do
     resources "/towns", TownController
     resources "/pickups", PickupController
     get "/cart", OrderController, :cart
+    get "/checkout", OrderController, :checkout
     # resources "/sessions", SessionController, only: [:new, :create, :delete]
 
     # get "/*path", GlobRouter, []

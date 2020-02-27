@@ -25,6 +25,10 @@ import CartNav from './components/CartNav'
 import AddToCartMultiple from './components/AddToCartMultiple'
 import Cart from './components/Cart'
 import CartTotals from './components/CartTotals'
+import CheckoutTotal from './components/CheckoutTotal'
+import CheckoutAddress from './components/CheckoutAddress'
+import CheckoutCart from './components/CheckoutCart'
+import Checkout from './components/Checkout'
 import store from './store'
 import { initialize } from "./helpers/initialization"
 
@@ -39,6 +43,10 @@ Vue.component('cartNav', CartNav);
 Vue.component('addToCartMultiple', AddToCartMultiple);
 Vue.component('cart', Cart);
 Vue.component('cartTotals', CartTotals);
+Vue.component('checkoutTotal', CheckoutTotal);
+Vue.component('checkoutAddress', CheckoutAddress);
+Vue.component('CheckoutCart', CheckoutCart);
+Vue.component('checkout', Checkout);
 
 new Vue({
     store,

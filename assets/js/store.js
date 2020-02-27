@@ -3,13 +3,16 @@ import Vuex from 'vuex'
 
 Vue.use(Vuex)
 const CART_NAME = "ph-cart"
+const ADDRESS_NAME = "ph-address-shipping"
 
 export default new Vuex.Store({
     state: {
         added: JSON.parse(localStorage.getItem(CART_NAME)) || [],
+        address: JSON.parse(localStorage.getItem(ADDRESS_NAME)) || [],
     },
     getters: {
         cart: state => state.added,
+        shippingDetails: state => state.address
     },
     mutations: {
         removeCart(state) {
@@ -59,6 +62,10 @@ export default new Vuex.Store({
 
             localStorage.setItem(CART_NAME, JSON.stringify(state.added));
         },
+        ADD_SHIPPING_DETAILS(state, payload) {
+            state.address.push(payload)
+            localStorage.setItem(ADDRESS_NAME, JSON.stringify(state.address));
+        }
     },
     actions: {
         addToCart({ commit }, payload) {
@@ -72,6 +79,9 @@ export default new Vuex.Store({
         },
         removeCart(context) {
             context.commit('removeCart');
+        },
+        shippingDetails({ commit }, payload) {
+            commit('ADD_SHIPPING_DETAILS', payload)
         }
     }
 })
