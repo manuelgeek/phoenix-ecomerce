@@ -24,7 +24,7 @@ defmodule ShopWeb.SessionController do
       {:error, message} ->
         conn
         |> put_flash(:error, message)
-        |> redirect(to: Routes.product_path(conn, :index))
+        |> redirect(to: Routes.session_path(conn, :new))
     end
   end
 

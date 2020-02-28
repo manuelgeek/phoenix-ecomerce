@@ -42,6 +42,7 @@ defmodule ShopWeb.Router do
   scope "/api", ShopWeb.Api do
     pipe_through :api
     get "/addresses", GeneralController, :addresses
+    get "/test", GeneralController, :test
   end
 end
 
