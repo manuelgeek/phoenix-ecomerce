@@ -13,7 +13,16 @@ defmodule ShopWeb.Api.GeneralController do
   end
 
   def test(conn, _) do
-    Mpesa.make_request()
-    conn
+    case Mpesa.make_request(10, "254724540039", "reference", "description") do
+      {:ok, response} ->
+        conn
+        |> put_status(200)
+        |> json(%{data: response})
+
+      {:error, message} ->
+        conn
+        |> put_status(403)
+        |> json(%{data: message})
+    end
   end
 end

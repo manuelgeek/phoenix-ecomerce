@@ -37,10 +37,10 @@ defmodule Shop.Services.Mpesa do
     {:ok, body["access_token"]}
   end
 
-  def make_request() do
+  def make_request(amount, phone, reference, description) do
     case authorize() do
       {:ok, token} ->
-        request(token, 10, "254724540039", "reference", "description")
+        request(token, amount, phone, reference, description)
 
       {:error, message} ->
         IO.inspect(message)
@@ -76,11 +76,11 @@ defmodule Shop.Services.Mpesa do
     ]
 
     {:ok, response} = HTTPoison.post(url, request_body, headers)
-    IO.inspect get_response_body(response)
+    get_response_body(response)
   end
 
   def get_response_body(%{status_code: 200, body: body} = _response) do
-    {:ok, _body} = body |> Poison.decode() 
+    {:ok, _body} = body |> Poison.decode()
   end
 
   def get_response_body(%{status_code: 404} = _response) do
