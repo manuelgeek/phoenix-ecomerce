@@ -43,6 +43,8 @@ defmodule ShopWeb.Router do
     pipe_through :api
     get "/addresses", GeneralController, :addresses
     get "/test", GeneralController, :test
+    post "/order/make", OrdersController, :make_order
+    post "/payment/callback", OrdersController, :payment_response
   end
 end
 

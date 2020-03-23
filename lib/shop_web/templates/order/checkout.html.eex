@@ -73,7 +73,7 @@
                     </div>
                     <hr class="tall">
                     <h4>Payment</h4>
-                    <checkout phone="<%= @current_user.phone %>" />
+                    <checkout :user="<%= map_to_json @current_user %>" />
                   </div>
                 </div>
               </div>

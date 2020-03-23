@@ -46,7 +46,7 @@
         type: 'success',
       }).show();
   <% end %>
-  
+
   <%= if get_flash(@conn, :info) do %>
      $('.top-right').notify({
         message: "<%= get_flash(@conn, :info) %>" ,
@@ -54,7 +54,7 @@
         type: 'info',
       }).show();
   <% end %>
-  
+
   <%= if get_flash(@conn, :warning) do %>
      $('.top-right').notify({
         message: "<%= get_flash(@conn, :warning) %>" ,
@@ -62,7 +62,7 @@
         type: 'warning',
       }).show();
   <% end %>
-  
+
   <%= if get_flash(@conn, :error) do %>
      $('.top-right').notify({
         message: "<%= get_flash(@conn, :error) %>" ,
@@ -70,7 +70,7 @@
         type: 'danger',
       }).show();
   <% end %>
-  
+
   <%= if assigns[:changeset] && @changeset.action do %>
      $('.top-right').notify({
         message: "Oops, something went wrong! Please check the errors below." ,

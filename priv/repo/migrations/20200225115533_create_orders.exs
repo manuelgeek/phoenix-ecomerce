@@ -8,11 +8,11 @@ defmodule Shop.Repo.Migrations.CreateOrders do
       add :shipping_fee, :integer
       add :delivery_address, :string
       add :items, :integer
+      add :phone, :string
       add :payment_method, :string
       add :user_id, references(:users, on_delete: :delete_all), null: false
 
       timestamps()
     end
-
   end
 end

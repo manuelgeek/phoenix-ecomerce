@@ -1,10 +1,10 @@
 // We need to import the CSS so that webpack will load it.
 // The MiniCssExtractPlugin is used to separate it out into
 // its own CSS file.
-import css from "../css/app.css"
+// import css from "../css/app.css"
 
 
-import "phoenix_html"
+// import "phoenix_html"
 
 import axios from 'axios'
 window.axios = axios;
@@ -35,6 +35,7 @@ import { initialize } from "./helpers/initialization"
 initialize(store)
 
 import VueIziToast from 'vue-izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
 Vue.use(VueIziToast, { position: 'topRight' });
 
 Vue.component('message', Message);

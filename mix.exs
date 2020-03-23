@@ -50,7 +50,8 @@ defmodule Shop.MixProject do
       {:scrivener_ecto, "~> 2.0"},
       {:scrivener_html, "~> 1.8"},
       {:poison, "~> 3.1"},
-      {:httpoison, "~> 1.6"}
+      {:httpoison, "~> 1.6"},
+      {:mpesa, "~> 0.1.2"}
     ]
   end
 

@@ -2,7 +2,8 @@ defmodule ShopWeb.Api.GeneralController do
   @moduledoc false
   use ShopWeb, :controller
   alias Shop.Towns
-  alias Shop.Services.Mpesa
+
+  #   alias Shop.Services.Mpesa
 
   def addresses(conn, _) do
     addr = Towns.list_active_towns()

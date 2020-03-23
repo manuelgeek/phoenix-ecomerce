@@ -24,6 +24,14 @@ defmodule ShopWeb do
       import Plug.Conn
       import ShopWeb.Gettext
       alias ShopWeb.Router.Helpers, as: Routes
+
+      def translate_error({msg, opts}) do
+        if count = opts[:count] do
+          Gettext.dngettext(ShopWeb.Gettext, "errors", msg, msg, count, opts)
+        else
+          Gettext.dgettext(ShopWeb.Gettext, "errors", msg, opts)
+        end
+      end
     end
   end
 

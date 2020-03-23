@@ -4,7 +4,7 @@
 			<div class="col-md-12">
 				<span class="remember-box checkbox">
 					<label>
-						<input type="checkbox" checked="checked" />Mpesa
+						<input v-model="payment_method" type="checkbox" checked="checked" value="mpesa" />Mpesa
 					</label>
 				</span>
 			</div>
@@ -24,7 +24,7 @@
 			<input
 				type="button"
 				@click="makeOrder"
-				value="Place Order"
+				:value="btn"
 				name="proceed"
 				class="btn btn-lg btn-primary push-top"
 			/>
@@ -34,20 +34,51 @@
 
 <script>
 	export default {
-		props: ["phone"],
+		props: ["user"],
 		data() {
 			return {
 				location: null,
 				pickup: null,
 				loaded: false,
-				phone_no: this.phone
+				phone_no: this.user.phone,
+                payment_method: "mpesa",
+                btn: "Place Order"
 			};
 		},
 		methods: {
 			makeOrder() {
-                console.log('jaja')
-                alert('Pending !!!')
-				this.$toast.info("Functionality Pending !");
+                this.btn = "Placing order ..."
+				// alert("Pending !!!");
+				// this.$toast.error("An error occured, try again !");
+				const body = {
+					phone: this.phone_no,
+					amount: this.pickup.delivery_fee + this.total,
+					delivery_address: this.location.name + ", " + this.pickup.name,
+					items: this.itemsInCart,
+					payment_method: this.payment_method ?? 'mpesa',
+					shipping_fee: this.pickup.delivery_fee,
+					carts: this.cartItems,
+					user_id: this.user.id
+				};
+				// console.log(body);
+				axios
+					.post("/order/make", body)
+					.then(response => {
+                        this.$toast.success("Success !");
+                        console.log(response.data)
+                        alert('Success')
+                        this.btn = "Order Placed"
+				    })
+					.catch(error => {
+						if (error.response.status === 403) {
+                            this.$toast.error("An error occured, try again !");
+                            alert(error.response.data.message)
+						}
+						if (error.response.status === 422) {
+							console.log(error.response.data);
+                        }
+                        this.btn = "Place Order"
+					});
 			},
 			quantity(id) {
 				let record = this.cart.find(p => p.item.id === id);
@@ -81,7 +112,15 @@
 				return cart.reduce((total, p) => {
 					return total + p.item.selling_price * p.quantity;
 				}, 0);
-			}
+            },
+            cartItems(){
+                let cart = this.$store.getters.cart;
+                let items = [];
+                cart.forEach(p => {
+                    items.push({product_id : p.item.id, items : p.quantity});
+                })
+                return items;
+            },
 		},
 		filters: {
 			currency(int) {

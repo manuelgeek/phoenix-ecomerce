@@ -16,6 +16,6 @@ defmodule Shop.Orders.Cart do
   def changeset(cart, attrs) do
     cart
     |> cast(attrs, [:items, :product_id, :order_id])
-    |> validate_required([:items, :product_id, :order_id])
+    |> validate_required([:items, :product_id])
   end
 end

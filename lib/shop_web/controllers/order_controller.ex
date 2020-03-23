@@ -1,6 +1,7 @@
 defmodule ShopWeb.OrderController do
   use ShopWeb, :controller
   import ShopWeb.Authorize
+
   plug :user_check when action in [:checkout]
 
   def cart(conn, _params) do
