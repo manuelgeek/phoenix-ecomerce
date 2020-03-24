@@ -19,7 +19,7 @@ defmodule ShopWeb.CategoryController do
     slug = Helper.slugified_title(category_params["name"])
     category_params = Map.put(category_params, "slug", slug)
     case Categories.create_category(category_params) do
-      {:ok, category} ->
+      {:ok, _category} ->
         conn
         |> put_flash(:info, "Category created successfully.")
         |> redirect(to: Routes.category_path(conn, :index))

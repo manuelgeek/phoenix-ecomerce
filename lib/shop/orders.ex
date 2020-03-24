@@ -8,11 +8,12 @@ defmodule Shop.Orders do
 
   alias Shop.Orders.Order
 
-  def list_orders do
-    Repo.all(Order)
+  def user_orders(params, user_id) do
+    Order
+    |> order_by(desc: :inserted_at)
+    |> where([p], p.user_id == ^user_id)
+    |> Repo.paginate(params)
   end
-
-  def get_order!(id), do: Repo.get!(Order, id)
 
   def validate_order(attrs \\ %{}) do
     %Order{}
@@ -25,40 +26,7 @@ defmodule Shop.Orders do
     |> Repo.insert()
   end
 
-  def delete_order(%Order{} = order) do
-    Repo.delete(order)
-  end
-
   def change_order(%Order{} = order) do
     Order.changeset(order, %{})
-  end
-
-  # Cart
-  alias Shop.Orders.Cart
-
-  def list_carts do
-    Repo.all(Cart)
-  end
-
-  def get_cart!(id), do: Repo.get!(Cart, id)
-
-  def create_cart(attrs \\ %{}) do
-    %Cart{}
-    |> Cart.changeset(attrs)
-    |> Repo.insert()
-  end
-
-  def update_cart(%Cart{} = cart, attrs) do
-    cart
-    |> Cart.changeset(attrs)
-    |> Repo.update()
-  end
-
-  def delete_cart(%Cart{} = cart) do
-    Repo.delete(cart)
-  end
-
-  def change_cart(%Cart{} = cart) do
-    Cart.changeset(cart, %{})
   end
 end

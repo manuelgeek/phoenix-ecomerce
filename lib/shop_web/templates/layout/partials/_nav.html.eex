@@ -57,6 +57,9 @@
                 <li>
                   <a href="#">My Account</a>
                 </li>
+                <li>
+                  <a href="<%= Routes.order_path(@conn, :orders) %>">My Orders</a>
+                </li>
                 <li> <a href="/logout" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">Logout</a></li>
                 <%= form_for @conn, Routes.session_path(@conn, :delete), [as: :session , id: "logout-form"], fn f -> %>
