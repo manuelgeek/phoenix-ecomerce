@@ -29,9 +29,7 @@ defmodule ShopWeb.Api.OrdersController do
               "MerchantRequestID" => response["MerchantRequestID"]
             })
 
-            conn = fetch_session(conn)
-            conn = put_session(conn, :test, "order_params")
-            IO.inspect get_session(conn)
+            ConCache.put(:orders_cache, response["CheckoutRequestID"], order_params)
 
             conn
             |> put_status(200)
@@ -57,10 +55,7 @@ defmodule ShopWeb.Api.OrdersController do
     # IO.inspect(stkCallback["CheckoutRequestID"])
 
     if(stkCallback["ResultCode"] === 0) do
-      conn = fetch_session(conn)
-      order = get_session(conn)
-
-      IO.inspect(order)
+      order = ConCache.get(:orders_cache, stkCallback["CheckoutRequestID"])
 
       if(order) do
         transaction = %Shop.Orders.Transaction{
@@ -78,6 +73,7 @@ defmodule ShopWeb.Api.OrdersController do
 
         case Orders.create_order(order) do
           {:ok, _order} ->
+            ConCache.delete(:orders_cache, stkCallback["CheckoutRequestID"])
             conn
             |> text('Success')
 

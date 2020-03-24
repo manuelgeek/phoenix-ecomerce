@@ -11,9 +11,16 @@ defmodule Shop.Application do
       # Start the Ecto repository
       Shop.Repo,
       # Start the endpoint when the application starts
-      ShopWeb.Endpoint
+      ShopWeb.Endpoint,
       # Starts a worker by calling: Shop.Worker.start_link(arg)
       # {Shop.Worker, arg},
+      {ConCache,
+       [
+         name: :orders_cache,
+         ttl_check_interval: :timer.seconds(600),
+         global_ttl: :timer.seconds(600),
+         touch_on_read: true
+       ]}
     ]
 
     # See https://hexdocs.pm/elixir/Supervisor.html

@@ -1,5 +1,5 @@
 <template>
-	<span @click.prevent="addToCart">
+	<span style="cursor: pointer;" @click.prevent="addToCart">
 		<i class="fa fa-shopping-cart"></i> Add to Cart
 	</span>
 </template>

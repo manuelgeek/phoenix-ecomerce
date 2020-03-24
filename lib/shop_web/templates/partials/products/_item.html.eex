@@ -2,7 +2,7 @@
     <span class="onsale"><%= percentage_off(@product.selling_price, @product.marked_price) %>% </span>
   </a>
   <span class="product-thumb-info">
-    <a style="cursor: pointer;" class="add-to-cart-product">
+    <a class="add-to-cart-product">
       <add-to-cart :item="<%= map_to_json @product %>"/>
     </a>
     <a href="<%= Routes.product_path(@conn, :show, @product.slug) %>">

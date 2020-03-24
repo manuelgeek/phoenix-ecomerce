@@ -20,7 +20,7 @@ defmodule Shop.MixProject do
   def application do
     [
       mod: {Shop.Application, []},
-      extra_applications: [:logger, :runtime_tools, :scrivener_ecto, :httpoison]
+      extra_applications: [:con_cache, :logger, :runtime_tools, :scrivener_ecto, :httpoison]
     ]
   end
 
@@ -51,7 +51,8 @@ defmodule Shop.MixProject do
       {:scrivener_html, "~> 1.8"},
       {:poison, "~> 3.1"},
       {:httpoison, "~> 1.6"},
-      {:mpesa, "~> 0.1.2"}
+      {:mpesa, "~> 0.1.2"},
+      {:con_cache, "~> 0.13"}
     ]
   end
 

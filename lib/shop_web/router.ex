@@ -13,6 +13,7 @@ defmodule ShopWeb.Router do
 
   pipeline :api do
     plug :accepts, ["json"]
+    plug :fetch_session
   end
 
   scope "/", ShopWeb do
@@ -33,6 +34,7 @@ defmodule ShopWeb.Router do
     resources "/pickups", PickupController
     get "/cart", OrderController, :cart
     get "/checkout", OrderController, :checkout
+    get "/orders", OrderController, :orders
     # resources "/sessions", SessionController, only: [:new, :create, :delete]
 
     # get "/*path", GlobRouter, []

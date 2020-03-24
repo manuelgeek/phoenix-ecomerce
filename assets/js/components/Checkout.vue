@@ -4,7 +4,7 @@
 			<div class="col-md-12">
 				<span class="remember-box checkbox">
 					<label>
-						<input v-model="payment_method" type="checkbox" checked="checked" value="mpesa" />Mpesa
+						<input v-model="payment_method" type="checkbox" disabled checked="checked" value="mpesa" />Mpesa
 					</label>
 				</span>
 			</div>
@@ -60,14 +60,16 @@
 					carts: this.cartItems,
 					user_id: this.user.id
 				};
-				// console.log(body);
+				console.log(body);
 				axios
 					.post("/order/make", body)
 					.then(response => {
                         this.$toast.success("Success !");
-                        console.log(response.data)
-                        alert('Success')
+                        // console.log(response.data)
+                        alert('Success, enter Mpesa Pin from the STK to finish')
+                        this.$store.dispatch('removeCart');
                         this.btn = "Order Placed"
+                        window.location.href = '/orders'
 				    })
 					.catch(error => {
 						if (error.response.status === 403) {
