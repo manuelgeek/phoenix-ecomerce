@@ -74,8 +74,8 @@
         </li>
       <% end %>
       <cart-nav/>
-      </ul>
-    </nav>
-  </div>
-</div>
-</header>
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </header>
