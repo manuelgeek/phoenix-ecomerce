@@ -68,6 +68,6 @@ config :mpesa,
   env: System.get_env("MPESA_ENV"),
   consumer_key: System.get_env("MPESA_CONSUMER_KEY"),
   consumer_secret: System.get_env("MPESA_CONSUMER_SECRET"),
-  mpesa_short_code: String.to_integer(System.get_env("MPESA_PASSKEY")),
+  mpesa_short_code: String.to_integer(System.get_env("MPESA_SHORT_CODE")),
   mpesa_passkey: System.get_env("MPESA_PASSKEY"),
   mpesa_callback_url: System.get_env("MPESA_CALLBACK_URL")
