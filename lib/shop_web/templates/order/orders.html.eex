@@ -33,40 +33,46 @@
                     </tr>
                   </thead>
                   <tbody>
-                    <%= for {order, i} <- Enum.with_index(@orders) do %>
-                      <tr class="cart_table_item">
-                        <td class="product-remove">
-                          <%= i + 1 %>
-                        </td>
-                        <td class="product-remov">
-                          <a href="#"><%= order.code %></a>
-                        </td>
-                        <td class="product-thumbnai">
-                          <%= order.phone %>
-                        </td>
-                        <td class="product-nam">
-                          <%= order.amount %>
-                        </td>
-                        <td class="product-price">
-                          <span class="amount"><%= order.items %></span>
-                        </td>
-                        <td class="product-quantity">
-                          <%= order.payment_method %>
-                        </td>
-                        <td class="product-subtotal">
-                          <span class="amount"><%= order.delivery_address %></span>
+                    <%= if @page.total_entries > 0 do %>
+                      <%= for {order, i} <- Enum.with_index(@orders) do %>
+                        <tr class="cart_table_item">
+                          <td class="product-remove">
+                            <%= i + 1 %>
+                          </td>
+                          <td class="product-remov">
+                            <a href="#"><%= order.code %></a>
+                          </td>
+                          <td class="product-thumbnai">
+                            <%= order.phone %>
+                          </td>
+                          <td class="product-nam">
+                            <%= order.amount %>
+                          </td>
+                          <td class="product-price">
+                            <span class="amount"><%= order.items %></span>
+                          </td>
+                          <td class="product-quantity">
+                            <%= order.payment_method %>
+                          </td>
+                          <td class="product-subtotal">
+                            <span class="amount"><%= order.delivery_address %></span>
+                          </td>
+                        </tr>
+                      <% end %>
+                      <tr>
+                        <td class="actions" colspan="6">
+                          <div class="actions-continue">
+                            <ul class="pagination pagination-lg pull-right">
+                              <%= pagination_links @page %>
+                            </ul>
+                          </div>
                         </td>
                       </tr>
+                    <% else %>
+                      <tr>
+                        <td colspan="7">No Orders Yet</td>
+                      </tr>
                     <% end %>
-                    <tr>
-                      <td class="actions" colspan="6">
-                        <div class="actions-continue">
-                          <ul class="pagination pagination-lg pull-right">
-                            <%= pagination_links @page %>
-                          </ul>
-                        </div>
-                      </td>
-                    </tr>
                   </tbody>
                 </table>
               </form>

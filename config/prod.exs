@@ -65,9 +65,9 @@ config :shop, Shop.Repo,
 
 # on prod, will definatly use .env
 config :mpesa,
-  env: "sandbox",
-  consumer_key: "72yw1nun6g1QQPPgOsAObCGSfuimGO7b",
-  consumer_secret: "vRzZiD5RllMLIdLD",
-  mpesa_short_code: "174379",
-  mpesa_passkey: "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
-  mpesa_callback_url: "https://phx-shop.herokuapp.com/api/payment/callback"
+  env: System.get_env("MPESA_ENV"),
+  consumer_key: System.get_env("MPESA_CONSUMER_KEY"),
+  consumer_secret: System.get_env("MPESA_CONSUMER_SECRET"),
+  mpesa_short_code: String.to_integer(System.get_env("MPESA_PASSKEY")),
+  mpesa_passkey: System.get_env("MPESA_PASSKEY"),
+  mpesa_callback_url: System.get_env("MPESA_CALLBACK_URL")

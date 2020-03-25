@@ -17,18 +17,33 @@ for user <- users do
 end
 
 for a <- 0..4 do
-    cat = Faker.Lorem.word()
-    slg = Shop.Helpers.Helper.slugified_title(cat)
-    {:ok, category} = Shop.Categories.create_category(%{name: cat, slug: slg})
-    for s <- 0..10 do
-        name = Faker.Lorem.sentence(2)
-        slug = Shop.Helpers.Helper.slugified_title(name)
-        price = Enum.random(50..150)
-        sell_price = price - Enum.random(10..35)
-        prod = %{name: name, slug: slug, description: Faker.Lorem.paragraph(), marked_price: price, selling_price: sell_price, category_id: category.id}
-        {:ok, product} = Shop.Products.create_product(prod)
-        for i <- 0..2 do
-            {:ok, product} = Shop.Products.create_product_image(%{name: "/dist/img/products/product-1.jpg", product_id: product.id})
-        end
+  cat = Faker.Lorem.word()
+  slg = Shop.Helpers.Helper.slugified_title(cat)
+  {:ok, category} = Shop.Categories.create_category(%{name: cat, slug: slg})
+
+  for s <- 0..10 do
+    name = Faker.Lorem.sentence(2)
+    slug = Shop.Helpers.Helper.slugified_title(name)
+    price = Enum.random(50..150)
+    sell_price = price - Enum.random(10..35)
+
+    prod = %{
+      name: name,
+      slug: slug,
+      description: Faker.Lorem.paragraph(),
+      marked_price: price,
+      selling_price: sell_price,
+      category_id: category.id
+    }
+
+    {:ok, product} = Shop.Products.create_product(prod)
+
+    for i <- 0..2 do
+      {:ok, product} =
+        Shop.Products.create_product_image(%{
+          name: "/dist/img/products/product-1.jpg",
+          product_id: product.id
+        })
     end
+  end
 end
