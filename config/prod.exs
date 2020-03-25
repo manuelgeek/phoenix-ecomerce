@@ -60,14 +60,14 @@ config :shop, Shop.Repo,
   url: System.get_env("DATABASE_URL"),
   pool_size: String.to_integer(System.get_env("POOL_SIZE") || "10"),
   ssl: true
+
 # import_config "prod.secret.exs"
 
 # on prod, will definatly use .env
-config :shop, ShopWeb.Endpoint,
-  mpesa: [
-    consumer_key: "72yw1nun6g1QQPPgOsAObCGSfuimGO7b",
-    consumer_secret: "vRzZiD5RllMLIdLD",
-    mpesa_short_code: "174379",
-    mpesa_passkey: "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
-    mpesa_callback_url: "https://phx-shop.herokuapp.com/api/payment/callback"
-  ]
+config :mpesa,
+  env: "sandbox",
+  consumer_key: "72yw1nun6g1QQPPgOsAObCGSfuimGO7b",
+  consumer_secret: "vRzZiD5RllMLIdLD",
+  mpesa_short_code: "174379",
+  mpesa_passkey: "bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b72ada1ed2c919",
+  mpesa_callback_url: "https://phx-shop.herokuapp.com/api/payment/callback"

@@ -60,7 +60,7 @@
 					carts: this.cartItems,
 					user_id: this.user.id
 				};
-				console.log(body);
+				// console.log(body);
 				axios
 					.post("/order/make", body)
 					.then(response => {
@@ -79,6 +79,10 @@
 						if (error.response.status === 422) {
 							console.log(error.response.data);
                         }
+                        if (error.response.status === 500) {
+                            this.$toast.error("An error occured, try again !");
+                            alert('An error occured, try again !')
+						}
                         this.btn = "Place Order"
 					});
 			},
