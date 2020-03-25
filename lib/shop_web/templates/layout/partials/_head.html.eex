@@ -1,7 +1,7 @@
 <head>
   <!-- Basic -->
   <meta charset="utf-8">
-  <title><%= System.get_env("APP_NAME", "Phoenix Shop") %></title>
+  <title>Phoenix Shop</title>
   <meta name="keywords" content="HTML5 Template" />
   <meta name="description" content="Porto - Responsive HTML5 Template">
   <meta name="author" content="okler.net">
