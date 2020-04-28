@@ -1,5 +1,10 @@
+<p align="center"><img src="https://magak.me/assets/images/Geek-logo.png" width="150"></p>
+
 # Shop
 
+> A sample  E-commerce site written in Vue Js and Phoenix
+
+## Set Up
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
@@ -19,3 +24,16 @@ Ready to run in production? Please [check our deployment guides](https://hexdocs
   * Docs: https://hexdocs.pm/phoenix
   * Mailing list: http://groups.google.com/group/phoenix-talk
   * Source: https://github.com/phoenixframework/phoenix
+
+## About Me
+
+[Magak Emmanuel](https://magak.me)
+
+## License
+
+[![license](https://img.shields.io/github/license/mashape/apistatus.svg?style=for-the-badge)](#)
+
+[![Open Source Love](https://badges.frapsoft.com/os/v2/open-source-200x33.png?v=103)](#)
+
+
+Happy coding, Star before Fork 😊💪💯
