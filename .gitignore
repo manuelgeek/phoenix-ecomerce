@@ -35,3 +35,4 @@ npm-debug.log
 /.elixir_ls
 assets/js/components/Travis
 .env
+.vscode
