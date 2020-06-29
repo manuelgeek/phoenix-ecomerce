@@ -1,0 +1,44 @@
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/js/bootstrap-notify.js"></script>
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/css/bootstrap-notify.css">
+<div class='notifications top-right'></div>
+<script>
+  <%= if get_flash(@conn, :success) do %>
+     $('.top-right').notify({
+        message: "<%= get_flash(@conn, :success) %>" ,
+        title: 'Success',
+        type: 'success',
+      }).show();
+  <% end %>
+
+  <%= if get_flash(@conn, :info) do %>
+     $('.top-right').notify({
+        message: "<%= get_flash(@conn, :info) %>" ,
+        title: 'Info',
+        type: 'info',
+      }).show();
+  <% end %>
+
+  <%= if get_flash(@conn, :warning) do %>
+     $('.top-right').notify({
+        message: "<%= get_flash(@conn, :warning) %>" ,
+        title: 'Warning',
+        type: 'warning',
+      }).show();
+  <% end %>
+
+  <%= if get_flash(@conn, :error) do %>
+     $('.top-right').notify({
+        message: "<%= get_flash(@conn, :error) %>" ,
+        title: 'Danger',
+        type: 'danger',
+      }).show();
+  <% end %>
+
+  <%= if assigns[:changeset] && @changeset.action do %>
+     $('.top-right').notify({
+        message: "Oops, something went wrong! Please check the errors below." ,
+        title: 'Danger',
+        type: 'danger',
+      }).show();
+    <% end %>
+</script>

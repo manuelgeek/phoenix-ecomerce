@@ -16,6 +16,10 @@ defmodule ShopWeb.Router do
     plug :fetch_session
   end
 
+  pipeline :admin do
+    plug :put_layout, {ShopWeb.LayoutView, "admin.html"}
+  end
+
   scope "/", ShopWeb do
     pipe_through :browser
 
@@ -38,6 +42,12 @@ defmodule ShopWeb.Router do
     # resources "/sessions", SessionController, only: [:new, :create, :delete]
 
     # get "/*path", GlobRouter, []
+    scope "/admin", Admin do
+      pipe_through :admin
+
+      get "/login", AuthController, :login
+      get "/", DashboardController, :index
+    end
   end
 
   # Other scopes may use custom stacks.

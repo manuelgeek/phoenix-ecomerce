@@ -66,4 +66,23 @@ defmodule ShopWeb.Authorize do
     |> redirect(to: Routes.session_path(conn, :new))
     |> halt()
   end
+
+  def auth_role(%Plug.Conn{assigns: %{current_user: nil}} = conn, _, _) do
+    conn
+    |> put_session(:request_path, current_path(conn))
+    |> put_flash(:error, "You need to log in to view this page")
+    |> redirect(to: Routes.auth_path(conn, :login))
+    |> halt()
+  end
+
+  def auth_role(%Plug.Conn{assigns: %{current_user: current_user}} = conn, roles, module) do
+    if current_user.role in roles do
+      apply(module, action_name(conn), [conn, conn.params, current_user])
+    else
+      conn
+      |> put_flash(:error, "You are not authorized to view this page")
+      |> redirect(to: Routes.auth_path(conn, :login))
+      |> halt()
+    end
+  end
 end
