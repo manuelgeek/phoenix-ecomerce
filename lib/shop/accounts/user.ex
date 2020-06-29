@@ -11,6 +11,7 @@ defmodule Shop.Accounts.User do
           name: String.t(),
           email: String.t(),
           phone: String.t(),
+          role: String.t(),
           password_hash: String.t(),
           sessions: [Session.t()] | %Ecto.Association.NotLoaded{},
           inserted_at: DateTime.t(),
@@ -21,6 +22,7 @@ defmodule Shop.Accounts.User do
     field :name, :string
     field :email, :string
     field :phone, :string
+    field :role, :string
     field :password, :string, virtual: true
     field :password_hash, :string
     has_many :sessions, Session, on_delete: :delete_all
@@ -31,14 +33,14 @@ defmodule Shop.Accounts.User do
 
   def changeset(%__MODULE__{} = user, attrs) do
     user
-    |> cast(attrs, [:email, :name, :phone])
+    |> cast(attrs, [:email, :name, :phone, :role])
     |> validate_required([:email, :name, :phone])
     |> unique_email
   end
 
   def create_changeset(%__MODULE__{} = user, attrs) do
     user
-    |> cast(attrs, [:email, :name, :phone, :password])
+    |> cast(attrs, [:email, :name, :phone, :password, :role])
     |> validate_required([:email, :name, :phone, :password])
     |> unique_email
     |> unique_phone_no

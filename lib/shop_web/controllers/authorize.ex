@@ -77,7 +77,7 @@ defmodule ShopWeb.Authorize do
 
   def auth_role(%Plug.Conn{assigns: %{current_user: current_user}} = conn, roles, module) do
     if current_user.role in roles do
-      apply(module, action_name(conn), [conn, conn.params, current_user])
+      apply(module, action_name(conn), [conn, conn.params])
     else
       conn
       |> put_flash(:error, "You are not authorized to view this page")

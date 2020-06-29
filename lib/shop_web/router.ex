@@ -46,6 +46,9 @@ defmodule ShopWeb.Router do
       pipe_through :admin
 
       get "/login", AuthController, :login
+      post "/login", AuthController, :create
+      post "/logout", AuthController, :delete
+
       get "/", DashboardController, :index
     end
   end
